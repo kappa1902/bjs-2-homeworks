@@ -1,31 +1,34 @@
-"use strict"
+"use strict";
+
 function solveEquation(a, b, c) {
-  let discrininant = b ** 2 - 4 * a * c
+  let discriminant = b ** 2 - 4 * a * c;
   let arr = [];
 
   if (discriminant < 0) {
     return arr;
-  } else if (discrininant === 0) {
+  } else if (discriminant === 0) {
     let root = -b / (2 * a);
     arr.push(root);
     return arr;
   } else {
-    let root1 = (-b + Math.sqrt(discrininant)) / (2 * a);
-    let root2 = (-b - Math.sqrt(discrininant)) / (2 * a);
+    let root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    let root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
     arr.push(root1, root2);
-    return arr
+    return arr;
   }
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let monthlyPercent = percent / 100 / 12;
-  let loanBody = amount - contribution;
+  let p = percent / 100 / 12;
+  let s = amount - contribution;
 
-  if (loanBody <= 0) {
+  if (s <= 0) {
     return 0;
   }
-  let monthlyPayment = loanBody * (monthlyPercent + (monthlyPercent / (((1 + monthlyPercent) ** countMonths) - 1)));
-  let totalAmount = (monthlyPayment * countMonths) + contribution;
+
+  let payment = s * (p + (p / (((1 + p) ** countMonths) - 1)));
+
+  let totalAmount = payment * countMonths;
 
   return Number(totalAmount.toFixed(2));
 }
