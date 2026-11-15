@@ -38,7 +38,7 @@ class AlarmClock {
             return;
         }
 
-        // Создаем новый интервал
+
         this.intervalId = setInterval(() => {
             const currentTime = this.getCurrentFormattedTime();
 
